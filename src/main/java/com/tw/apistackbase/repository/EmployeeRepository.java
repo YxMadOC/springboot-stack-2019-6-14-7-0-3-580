@@ -40,8 +40,8 @@ public class EmployeeRepository {
         return database.remove(employeeId);
     }
 
-    public List<Employee> findByAgeLargerThan10() {
-        return new ArrayList<>(database.values()).stream().filter(item -> item.getAge() >= 10).collect(Collectors.toList());
+    public List<Employee> findByAgeLargerThan(Integer age) {
+        return new ArrayList<>(database.values()).stream().filter(item -> item.getAge() >= age).collect(Collectors.toList());
     }
 
 }

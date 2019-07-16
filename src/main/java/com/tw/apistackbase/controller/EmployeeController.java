@@ -36,9 +36,9 @@ public class EmployeeController {
         return employeeRepository.delete(employeeId);
     }
 
-    @GetMapping("/employees/age/lt/10")
-    public List<Employee> findByAgeLargerThan10() {
-        return employeeRepository.findByAgeLargerThan10();
+    @GetMapping("/employees/age/lt/{age}")
+    public List<Employee> findByAgeLargerThan(@PathVariable Integer age) {
+        return employeeRepository.findByAgeLargerThan(age);
     }
 
 
