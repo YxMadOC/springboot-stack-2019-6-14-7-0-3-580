@@ -3,6 +3,7 @@ package com.tw.apistackbase.repository;
 import com.tw.apistackbase.model.Employee;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class EmployeeRepository {
 
@@ -37,6 +38,10 @@ public class EmployeeRepository {
 
     public Employee delete(String employeeId) {
         return database.remove(employeeId);
+    }
+
+    public List<Employee> findByAgeLargerThan10() {
+        return new ArrayList<>(database.values()).stream().filter(item -> item.getAge() >= 10).collect(Collectors.toList());
     }
 
 }

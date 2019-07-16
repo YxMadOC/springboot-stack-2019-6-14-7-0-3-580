@@ -31,10 +31,14 @@ public class EmployeeController {
         return employeeRepository.update(employeeId, employee);
     }
 
-
     @DeleteMapping("/employees/{employeeId}")
     public Employee delete(@PathVariable String employeeId) {
         return employeeRepository.delete(employeeId);
+    }
+
+    @GetMapping("/employees/age/lt/10")
+    public List<Employee> findByAgeLargerThan10() {
+        return employeeRepository.findByAgeLargerThan10();
     }
 
 
