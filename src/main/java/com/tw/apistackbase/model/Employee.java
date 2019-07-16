@@ -7,6 +7,13 @@ public class Employee {
     private Integer age;
     private String gender;
 
+    public Employee(String id, String name, Integer age, String gender) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+    }
+
     public String getId() {
         return id;
     }
