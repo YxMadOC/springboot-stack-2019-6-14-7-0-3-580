@@ -2,6 +2,7 @@ package com.tw.apistackbase.controller;
 
 import com.tw.apistackbase.model.Employee;
 import com.tw.apistackbase.repository.EmployeeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -9,7 +10,8 @@ import java.util.List;
 @RestController
 public class EmployeeController {
 
-    private EmployeeRepository employeeRepository = new EmployeeRepository();
+    @Autowired
+    private EmployeeRepository employeeRepository;
 
     @GetMapping("/employees")
     public List<Employee> findAll() {
@@ -36,8 +38,8 @@ public class EmployeeController {
         return employeeRepository.delete(employeeId);
     }
 
-    @GetMapping("/employees/age/lt/{age}")
-    public List<Employee> findByAgeLargerThan(@PathVariable Integer age) {
+    @GetMapping("/employees/lt")
+    public List<Employee> findByAgeLargerThan(@RequestParam Integer age) {
         return employeeRepository.findByAgeLargerThan(age);
     }
 
