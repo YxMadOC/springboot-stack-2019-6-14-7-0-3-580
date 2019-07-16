@@ -2,10 +2,7 @@ package com.tw.apistackbase.repository;
 
 import com.tw.apistackbase.model.Employee;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class EmployeeRepository {
 
@@ -27,8 +24,15 @@ public class EmployeeRepository {
     }
 
     public Employee save(Employee employee) {
+        employee.setId(UUID.randomUUID().toString());
         database.put(employee.getId(), employee);
         return database.get(employee.getId());
+    }
+
+    public Employee update(String employeeId, Employee employee) {
+        employee.setId(employeeId);
+        database.put(employeeId, employee);
+        return database.get(employeeId);
     }
 
     public Employee delete(String employeeId) {
